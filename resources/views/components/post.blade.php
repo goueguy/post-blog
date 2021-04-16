@@ -10,6 +10,7 @@
                 @method('DELETE')
                 <button type="submit" class="p-1 text-red-500">Delete</button>
             </form>
+        
         @endcan
 </div>
 <!--unlike and like posts-->

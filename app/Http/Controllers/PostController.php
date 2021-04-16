@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth'])->only(['store','destroy']);
+    }
     public function index(){
         $posts = Post::latest()->with(['user','likes'])->paginate(5);//get all posts
         return view("posts.index",['posts'=>$posts]);
@@ -19,7 +22,6 @@ class PostController extends Controller
     }
     public function store(Request $request){
         $this->validate($request, [
-            
             'body'=>'required'
         ]);
         
